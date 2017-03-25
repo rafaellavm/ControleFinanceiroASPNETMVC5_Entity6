@@ -1,22 +1,29 @@
-﻿@model Financas.Entidades.Movimentacao
+﻿@{
+    ViewBag.Title = "Form";
+}
+
+@model Financas.Entidades.Movimentacao
 
 @using (Html.BeginForm("Adiciona", "Movimentacao", FormMethod.Post))
 {
-    @Html.LabelFor(m => m.Valor, "Valor:")
+    @Html.LabelFor(m => m.Valor, "Valor")
     @Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.Valor)
 
-    @Html.LabelFor(m => m.UsuarioId, "Usuário:")
-    @Html.DropDownListFor(m => m.UsuarioId, new SelectList(ViewBag.Usuarios, "Id", "Nome"), new { @class = "form-control" })
+    @Html.LabelFor(m => m.UsuarioId, "Usuario")
+    @Html.DropDownListFor(m => m.UsuarioId,
+        new SelectList(ViewBag.Usuarios, "Id", "Nome"),
+        new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.UsuarioId)
-    
-    @Html.LabelFor(m => m.Tipo, "Tipo:")
+
+    @Html.LabelFor(m => m.Tipo, "Tipo")
     @Html.EnumDropDownListFor(m => m.Tipo, new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.Tipo)
-    
-    @Html.LabelFor(m => m.Data, "Data:")
+
+    @Html.LabelFor(m => m.Data, "Data")
     @Html.TextBoxFor(m => m.Data, new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.Data)
-    
-    <input type="submit" value="Enviar"/>
+
+    <input type="submit" value="Cadastrar" />
 }
+
